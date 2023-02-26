@@ -1,15 +1,8 @@
 import React, { useState } from "react";
+import InputTodo from "./input";
 
 export const TodoContainer = () => {
-  const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const handleTodo = (e) => setTodo(e.target.value);
-  const addTodo = () => {
-    setTodos((prev) => {
-      return [...prev, todo];
-    });
-    setTodo("");
-  };
   const delTodos = (index) => {
     setTodos((prev) => {
       return prev.filter((prev, ind) => ind !== index);
@@ -18,14 +11,7 @@ export const TodoContainer = () => {
 
   return (
     <div>
-      <div>
-        <input
-          value={todo}
-          onChange={handleTodo}
-          placeholder="add your job plz"
-        />
-        <button onClick={addTodo}>add</button>
-      </div>
+      <InputTodo setTodos={setTodos} />
       <div>
         {todos.length > 0 ? (
           todos.map((todo, index) => (
