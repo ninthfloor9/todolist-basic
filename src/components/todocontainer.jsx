@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputTodo from "./input";
+import TodoList from "./todolist";
 
 export const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -12,19 +13,7 @@ export const TodoContainer = () => {
   return (
     <div>
       <InputTodo setTodos={setTodos} />
-      <div>
-        {todos.length > 0 ? (
-          todos.map((todo, index) => (
-            // eslint-disable-next-line react/jsx-key
-            <div>
-              {todo}
-              <button onClick={() => delTodos(index)}>delete</button>
-            </div>
-          ))
-        ) : (
-          <div> 님 백수임? </div>
-        )}
-      </div>
+      <TodoList todos={todos} delTodos={delTodos} />
     </div>
   );
 };
