@@ -7,7 +7,9 @@ const InputTodo = (props) => {
 
   const addTodo = () => {
     props.setTodos((prev) => {
-      return [...prev, todo];
+      const newTodos = [...prev, todo];
+      localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
     });
     setTodo("");
   };
