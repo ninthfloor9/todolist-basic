@@ -18,6 +18,7 @@ export const TodoContainer = () => {
       setTodos(JSON.parse(savedTodos));
     }
   }, []);
+
   return (
     <div>
       <InputTodo setTodos={setTodos} />

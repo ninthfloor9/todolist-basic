@@ -1,11 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useRecoilValue } from "recoil";
+import { todoState } from "./recoil/stateManager";
+import InputTodo from "./input";
 
 const TodoList = (props) => {
+  const todoList = useRecoilValue(todoState);
   return (
     <div>
-      {props.todos.length > 0 ? (
-        props.todos.map((todo, index) => (
+      <InputTodo />
+      {todoList.length > 0 ? (
+        todoList.map((todo, index) => (
           // eslint-disable-next-line react/jsx-key
           <div>
             {todo}
