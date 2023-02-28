@@ -1,15 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useRecoilState } from "recoil";
+import { todoListState } from "./recoil/stateManager";
 
-const TodoList = (props) => {
+const TodoList = () => {
+  const [todoList, setTodoList] = useRecoilState(todoListState);
+  const delTodo = (index) => {
+    setTodoList((prev) => {
+      const newTodoList = prev.filter((item, itemIndex) => {
+        return itemIndex !== index;
+      });
+      return newTodoList;
+    });
+  };
   return (
     <div>
-      {props.todos.length > 0 ? (
-        props.todos.map((todo, index) => (
+      {todoList.length > 0 ? (
+        todoList.map((todo, index) => (
           // eslint-disable-next-line react/jsx-key
-          <div>
+          <div key={todo.index}>
             {todo}
-            <button onClick={() => props.delTodos(index)}>delete</button>
+            <button onClick={() => delTodo(index)}>delete</button>
           </div>
         ))
       ) : (
