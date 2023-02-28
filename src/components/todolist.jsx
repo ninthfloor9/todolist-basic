@@ -24,7 +24,7 @@ const TodoList = () => {
           </div>
         ))
       ) : (
-        <div> 님 백수임? </div>
+        <div> plz to something </div>
       )}
     </div>
   );
