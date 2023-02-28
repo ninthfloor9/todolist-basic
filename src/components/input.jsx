@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useSetRecoilState } from "recoil";
-import { todoState } from "./recoil/stateManager";
+import { todoListState } from "./recoil/stateManager";
 
 const InputTodo = () => {
   const [todo, setTodo] = useState("");
-  const setTodoList = useSetRecoilState(todoState);
+  const setTodoList = useSetRecoilState(todoListState);
   const handleTodo = (e) => setTodo(e.target.value);
 
   const addTodo = () => {
     setTodoList((prev) => {
       const newTodos = [...prev, todo];
-      localStorage.setItem("todos", JSON.stringify(newTodos));
       return newTodos;
     });
     setTodo("");

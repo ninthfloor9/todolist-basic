@@ -1,13 +1,12 @@
 import { atom, selector } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-export const todoState = atom({
-  key: "todoState",
-  default: [],
-});
+const { persistAtom } = recoilPersist();
 
 export const todoListState = atom({
   key: "todoListState",
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const todoListFilterState = atom({
